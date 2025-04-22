@@ -104,10 +104,10 @@ int main(int argc, char *argv[]) {
     client.SetAttribute("PacketSize", UintegerValue(1500));
 
     ApplicationContainer clientApps = client.Install(remoteHost.Get(0));
-    clientApps.Start(Seconds(2.5)); // Đảm bảo bearer đã active
+    clientApps.Start(Seconds(2.5));
     clientApps.Stop(Seconds(simTime - 0.5));
 
-    // Bật log để debug
+
     //LogComponentEnable("UdpClient", LOG_LEVEL_INFO);
     //LogComponentEnable("UdpServer", LOG_LEVEL_INFO);
     LogComponentEnable("MmWaveEnbMac", LOG_LEVEL_WARN);
@@ -118,7 +118,7 @@ int main(int argc, char *argv[]) {
 
     // Calculate throughput
     Ptr<UdpServer> udpServer = serverApps.Get(0)->GetObject<UdpServer>();
-    uint64_t totalRx = 10*udpServer->GetReceived();
+    uint64_t totalRx = udpServer->GetReceived();
     
     double throughput = (totalRx * 1500 * 8) / (simTime - 2.5) / 1e9;
 

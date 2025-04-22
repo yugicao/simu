@@ -44,7 +44,7 @@ void CalculateLatency(Ptr<const Packet> packet) {
   PacketTimestampTag tag;
   if (packet->PeekPacketTag(tag)) {
     Time delay = Simulator::Now() - tag.GetTimestamp();
-    std::cout << "Packet delay: " << delay.GetMilliSeconds() << " ms" << std::endl;
+    //std::cout << "Packet delay: " << delay.GetMilliSeconds() << " ms" << std::endl;
   }
 }
 
